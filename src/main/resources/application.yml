@@ -28,3 +28,8 @@ logging:
     org.springframework.web: INFO
     org.hibernate: INFO
     com.tpebank: DEBUG
+
+  tpebank:
+    app:
+      jwtSecret: tpebank@123
+      jwtExpirationMs: 86400000

@@ -1,9 +1,11 @@
 package com.tpebank.controller;
 import com.tpebank.domain.ContactMessage;
 import com.tpebank.dto.ContactMessageDTO;
+import com.tpebank.dto.response.ResponseMessages;
 import com.tpebank.dto.response.TpeResponse;
 import com.tpebank.service.ContactMessageService;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -36,7 +38,7 @@ public class ContactMessageController {
     @PostMapping("/visitor")
     public ResponseEntity<TpeResponse> createMessage(@Valid @RequestBody ContactMessageDTO contactMessageDTO){
         contactMessageService.saveMessage(contactMessageDTO);
-        TpeResponse tResponse = new TpeResponse(true,"Message saved successfully");
+        TpeResponse tResponse = new TpeResponse(true, ResponseMessages.CONTACT_MESSAGE_SAVE_RESPONSE_MESSAGE);
 
 
 
@@ -62,7 +64,7 @@ public class ContactMessageController {
     public ResponseEntity<TpeResponse> deleteMessage(@PathVariable Long id) {
 
         contactMessageService.deleteMessage(id);
-        TpeResponse tResponse = new TpeResponse(true, "Message deleted successfully");
+        TpeResponse tResponse = new TpeResponse(true, ResponseMessages.CONTACT_MESSAGE_DELETE_RESPONSE_MESSAGE);
         return ResponseEntity.ok(tResponse);
     }
 
@@ -71,7 +73,7 @@ public class ContactMessageController {
                                                      @Valid @RequestBody ContactMessageDTO contactMessageDTO) {
 
         contactMessageService.updateMessage(id,contactMessageDTO);
-        TpeResponse tResponse = new TpeResponse(true, "Message updated successfully");
+        TpeResponse tResponse = new TpeResponse(true, ResponseMessages.CONTACT_MESSAGE_UPDATE_RESPONSE_MESSAGE);
         return ResponseEntity.ok(tResponse);
     }
 
