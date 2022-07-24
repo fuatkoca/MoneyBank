@@ -21,6 +21,12 @@ public class TpeBankExceptionHandler extends ResponseEntityExceptionHandler {
         return buildResponseEntity(error);
     }
 
+    @ExceptionHandler(ConflictException.class)
+    protected ResponseEntity<Object> handleConflictException(ConflictException ex, WebRequest request){
+        ApiResponseError error=new ApiResponseError(HttpStatus.CONFLICT,ex.getMessage(),request.getDescription(false));
+        return buildResponseEntity(error);
+    }
+
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ApiResponseError error=new ApiResponseError(status,ex.getMessage(),request.getDescription(false));

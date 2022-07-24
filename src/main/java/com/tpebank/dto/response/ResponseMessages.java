@@ -9,6 +9,7 @@ public class ResponseMessages {
 
     public static final String CONTACT_MESSAGE_UPDATE_RESPONSE_MESSAGE="Message Updated Successfully";
 
+    public static final String REGISTER_RESPONSE_MESSAGE="User registered Successfully";
 
 
 

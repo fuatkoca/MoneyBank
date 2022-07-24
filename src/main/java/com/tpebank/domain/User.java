@@ -1,10 +1,12 @@
 package com.tpebank.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,7 +33,7 @@ public class User {
     @Column(length = 255,nullable = false)
     private String password;
     //555-555-5555
-    @Column(length = 13,nullable = false)
+    @Column(length = 14,nullable = false)
     private String phoneNumber;
     @Column(length = 250,nullable = false)
     private String address;
@@ -44,6 +46,9 @@ public class User {
     @JoinTable(name="tbl_user_role", joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Recipient> recipients;
 
 
 }

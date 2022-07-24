@@ -29,7 +29,7 @@ logging:
     org.hibernate: INFO
     com.tpebank: DEBUG
 
-  tpebank:
-    app:
+tpebank:
+ app:
       jwtSecret: tpebank@123
       jwtExpirationMs: 86400000
