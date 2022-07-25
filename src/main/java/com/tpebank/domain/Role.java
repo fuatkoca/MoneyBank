@@ -1,4 +1,5 @@
 package com.tpebank.domain;
+
 import com.tpebank.domain.enums.RoleType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,14 +10,16 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="tbl_role")
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 30,nullable = false)
     private RoleType name;
